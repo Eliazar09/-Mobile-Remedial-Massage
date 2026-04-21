@@ -36,7 +36,7 @@ const ServiceArea = () => {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8"
         >
-          {Object.entries(areas).map(([region, suburbs], index) => (
+          {Object.entries(areas).map(([region, suburbs]) => (
             <div key={region} className="text-center md:text-left">
               <h3 className="font-body text-xs tracking-tracked uppercase text-champagne mb-6">
                 {region}

@@ -82,7 +82,7 @@ const WhatToExpect = () => {
           <div className="md:hidden absolute left-8 top-0 bottom-0 w-px bg-champagne/20" />
 
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-6">
-            {steps.map((step, index) => (
+            {steps.map((step) => (
               <motion.div
                 key={step.number}
                 variants={itemVariants}
