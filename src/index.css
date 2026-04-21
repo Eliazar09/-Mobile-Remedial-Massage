@@ -1,0 +1,186 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* CSS Variables */
+:root {
+  --color-onyx: #0a0a0a;
+  --color-charcoal: #161616;
+  --color-champagne: #c9a961;
+  --color-light-gold: #e6c687;
+  --color-ivory: #f5f1e8;
+  --color-cream: #e8e2d3;
+}
+
+/* Global resets */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-onyx);
+  color: var(--color-ivory);
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typography classes */
+.font-display {
+  font-family: 'Italiana', serif;
+}
+
+.font-heading {
+  font-family: 'Cormorant Garamond', serif;
+}
+
+.font-body {
+  font-family: 'Inter', sans-serif;
+}
+
+/* Gold hairline divider */
+.hairline {
+  height: 1px;
+  background-color: var(--color-champagne);
+}
+
+/* Gold dot separator */
+.gold-dot {
+  width: 4px;
+  height: 4px;
+  background-color: var(--color-champagne);
+  border-radius: 50%;
+}
+
+/* Noise texture overlay */
+.noise-overlay {
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.03;
+  pointer-events: none;
+  mix-blend-mode: overlay;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-onyx);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-charcoal);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-champagne);
+}
+
+/* Selection color */
+::selection {
+  background-color: var(--color-champagne);
+  color: var(--color-onyx);
+}
+
+/* Focus states */
+*:focus-visible {
+  outline: 1px solid var(--color-champagne);
+  outline-offset: 2px;
+}
+
+/* Form input underline style */
+.input-gold-underline {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--color-champagne);
+  padding: 0.75rem 0;
+  color: var(--color-ivory);
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  width: 100%;
+  transition: border-color 0.3s ease;
+}
+
+.input-gold-underline::placeholder {
+  color: rgba(232, 226, 211, 0.5);
+}
+
+.input-gold-underline:focus {
+  outline: none;
+  border-bottom-color: var(--color-light-gold);
+}
+
+/* Select dropdown styling */
+select.input-gold-underline {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23c9a961' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right center;
+  padding-right: 1.5rem;
+  cursor: pointer;
+}
+
+select.input-gold-underline option {
+  background-color: var(--color-charcoal);
+  color: var(--color-ivory);
+}
+
+/* Textarea styling */
+textarea.input-gold-underline {
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* Page load animation */
+@keyframes pageLoad {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+#root {
+  animation: pageLoad 0.8s ease-out forwards;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  #root {
+    animation: none;
+  }
+}
+
+/* Section reveal animations */
+.section-reveal {
+  opacity: 0;
+  transform: scale(0.98);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.section-reveal.is-visible {
+  opacity: 1;
+  transform: scale(1);
+}
